@@ -1,0 +1,4 @@
+Câu hỏi :
+- Nếu bạn tạo một phương thức contructor để xây dựng DVD theo title thì hãy tạo một phương thức contructor để xây dựng DVD theo category. JAVA có cho phép bạn làm điều này không?
+
+Trả lời : Không như vậy thì chương trình Java sẽ báo lỗi vì khi đó 2 phương thức contructor sẽ trùng nhau do đều có chung 1 tham số và đều là string.
