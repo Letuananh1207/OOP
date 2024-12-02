@@ -1,0 +1,14 @@
+1. What class should implement the Comparable interface?
+Lớp `Media` nên implement `Comparable` vì chúng ta muốn so sánh các đối tượng của lớp này dựa trên một tiêu chí nào đó, ví dụ như theo `title` và `cost`. Việc cho phép các lớp con của `Media` (như `DigitalVideoDisc`, `CompactDisc`, `Book`) tự động sử dụng cơ chế sắp xếp là hợp lý, vì chúng đều chia sẻ các thuộc tính chung.
+
+2. In those classes, how should you implement the compareTo()method be to reflect the ordering that we
+want?
+Phương thức `compareTo()` cần được cài đặt để so sánh các đối tượng `Media` theo tiêu chí mong muốn, ví dụ như theo `title` và nếu hai đối tượng có `title` giống nhau thì so sánh theo `cost`. Cơ bản, `compareTo()` sẽ so sánh từng trường một, nếu trường đầu tiên không bằng nhau, ta trả về kết quả so sánh của trường đó. Nếu các trường đầu tiên bằng nhau, ta tiếp tục so sánh các trường tiếp theo.
+
+3. Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this
+Comparable interface approach?
+Không, `Comparable` chỉ cho phép một quy tắc sắp xếp duy nhất cho mỗi lớp. Nếu bạn cần nhiều quy tắc sắp xếp khác nhau, bạn có thể sử dụng `Comparator` thay vì `Comparable`, vì `Comparator` cho phép định nghĩa nhiều cách sắp xếp khác nhau cho các trường hợp khác nhau.
+
+4. Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing
+length, then cost. How would you modify your code to allow this?
+Để DVDs có quy tắc sắp xếp riêng, bạn có thể override phương thức `compareTo()` trong lớp `DigitalVideoDisc` và áp dụng quy tắc sắp xếp riêng cho lớp này. Ví dụ, bạn có thể sắp xếp theo `title`, nếu `title` giống nhau thì so sánh theo `length` theo thứ tự giảm dần, và sau cùng là `cost`. Điều này cho phép DVDs có thể có một quy tắc sắp xếp khác biệt so với các loại `Media` khác.
