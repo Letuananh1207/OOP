@@ -1,33 +1,25 @@
 package hust.soict.dsai.aims.store;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import java.util.ArrayList;
+
+import hust.soict.dsai.aims.media.Media;
 
 public class Store {
-	private DigitalVideoDisc itemsInStore[] = new DigitalVideoDisc[50];
+	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 	private int qtyInStore = 0;
 	
-	public void addDVD(DigitalVideoDisc dvd) {
-		if (qtyInStore < itemsInStore.length) {
-			itemsInStore[qtyInStore] = dvd;
-			qtyInStore++;
-			System.out.println("Thêm DVD thành công!");
-		}else {
-			System.out.println("Cửa hàng đã đầy không thể thêm DVD!");
-		}
+	public void addMedia(Media media) {
+	    itemsInStore.add(media);
+	    System.out.println(media.getTitle() + " đã được thêm vào store.");
 	}
+
 	
-	public void removeDVD(DigitalVideoDisc dvd) {
-		for (int i = 0; i < qtyInStore; i++) {
-			if (itemsInStore[i].equals(dvd)) {
-				for (int j = i; j < qtyInStore-1; j++) {
-					itemsInStore[j] = itemsInStore[j+1];
-				}
-				itemsInStore[qtyInStore-1] = null;
-				qtyInStore--;
-				System.out.println("Đã xóa " + dvd.toString()+ " thành công!");
-				return;
-			}
-		}
-		System.out.println("Không tồn tại DVD cần xóa!");
+	public void removeMedia(Media media) {
+	    if (itemsInStore.remove(media)) {
+	        System.out.println(media.getTitle() + " đã được xóa khỏi store.");
+	    } else {
+	        System.out.println(media.getTitle() + " không có trong store.");
+	    }
 	}
+
 	
 }
